@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      numero: 0
+    }
+
+    this.add = this.add.bind(this);
+    this.rm = this.rm.bind(this);
+  }
+
+  add(){
+    let valor = this.state.numero + 1;
+    this.setState({numero:valor})
+  }  
+  rm(){
+    let valor = this.state.numero - 1;
+    this.setState({numero: valor});
+  }
+
+  render(){
+    return(
+      <div className="margen">
+        <button onClick={this.add}> + </button>
+        <span className="label">{this.state.numero}</span>
+        <button onClick={this.rm}> - </button>
+      </div>
+    );
+  }
 }
-
 export default App;
